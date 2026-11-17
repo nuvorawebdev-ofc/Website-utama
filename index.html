@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F2F2ED">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <title data-title-id="Nuvora.webdev — Website Profesional untuk Bisnis" data-title-en="Nuvora.webdev — Professional Websites for Businesses">Nuvora.webdev — Website Profesional untuk Bisnis</title>
+  <meta name="description" content="Nuvora merancang dan membangun website profesional, landing page, dan desain ulang website untuk bisnis." data-description-id="Nuvora merancang dan membangun website profesional, landing page, dan desain ulang website untuk bisnis." data-description-en="Nuvora designs and builds professional websites, landing pages, and website redesigns for businesses.">
+  <style>
+    :root{
+      --lime-300:#D8F759;--lime-400:#C4F013;--gray-50:#F2F2ED;--white:#FFFFFF;
+      --gray-900:#141411;--black:#030302;--ink-soft:rgba(20,20,17,.68);
+      --ink-faint:rgba(20,20,17,.48);--line:rgba(20,20,17,.11);
+      --line-dark:rgba(255,255,255,.16);--radius-card:24px;--radius-panel:34px;
+      --content:1100px;--shadow-soft:0 24px 70px rgba(20,20,17,.10);
+      --font:Inter,Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--gray-50);color:var(--gray-900);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    :focus-visible{outline:3px solid var(--lime-400);outline-offset:4px}
+    .container{width:min(var(--content),calc(100% - 64px));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;width:min(1300px,calc(100% - 80px));margin:20px auto 0;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--white);border:1px solid rgba(20,20,17,.08);border-bottom:0;border-radius:30px 30px 0 0;box-shadow:0 8px 28px rgba(20,20,17,.025);backdrop-filter:none;-webkit-backdrop-filter:none}
+    .brand{display:inline-flex;align-items:center;gap:9px;min-width:0;font-size:14px;font-weight:800;letter-spacing:-.04em;white-space:nowrap}
+    .brand img{width:35px;height:35px;object-fit:contain;flex:0 0 auto}
+    .brand-text span{color:#7E9700}
+    .nav-links{display:flex;align-items:center;gap:clamp(14px,2.3vw,30px);margin-inline:auto}
+    .nav-links a{font-size:12px;font-weight:650;color:rgba(20,20,17,.72);transition:color .2s ease}
+    .nav-links a:hover{color:var(--gray-900)}
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .lang-switch{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--gray-50)}
+    .lang-switch button{min-width:34px;height:32px;border:0;border-radius:999px;background:transparent;color:var(--ink-soft);font-size:10px;font-weight:800;cursor:pointer;transition:background .2s ease,color .2s ease}
+    .lang-switch button[aria-pressed="true"]{background:var(--lime-300);color:var(--black)}
+    .btn{min-height:48px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;border:1px solid transparent;font-size:13px;font-weight:750;letter-spacing:-.015em;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-lime{background:var(--lime-300);color:var(--black);box-shadow:0 9px 28px rgba(216,247,89,.24)}
+    .btn-lime:hover{background:var(--lime-400);box-shadow:0 12px 34px rgba(196,240,19,.3)}
+    .btn-outline{border-color:rgba(20,20,17,.18);background:rgba(255,255,255,.64);color:var(--gray-900)}
+    .btn-light-outline{border-color:rgba(255,255,255,.36);background:rgba(255,255,255,.06);color:var(--white)}
+    .menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--white);cursor:pointer}
+    .menu-toggle span{display:block;width:16px;height:1px;margin:5px auto;background:var(--gray-900)}
+
+    /* Hero: an editorial canvas, confident copy, and the supplied portrait. */
+    .hero{padding:0 0 24px;background:var(--gray-50)}
+    .hero-shell{position:relative;isolation:isolate;width:min(1300px,calc(100% - 80px));min-height:650px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(390px,.96fr);align-items:center;gap:18px;overflow:hidden;border:1px solid rgba(20,20,17,.08);border-top:0;border-radius:0 0 34px 34px;padding:38px 56px 36px;background:linear-gradient(180deg,var(--white) 0%,var(--white) 67%,var(--gray-50) 100%);box-shadow:0 24px 58px rgba(20,20,17,.055)}
+    .hero-shell:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 75% 44%,rgba(216,247,89,.18),transparent 28%),radial-gradient(ellipse at 95% 95%,rgba(242,242,237,.72),transparent 48%);pointer-events:none}
+    .hero-copy{position:relative;z-index:3;max-width:620px;margin:0;padding:0;text-align:left}
+    .eyebrow{margin:0 0 14px;display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    .hero .eyebrow{padding:0;border:0;border-radius:0;background:transparent;color:rgba(20,20,17,.58);font-size:10px;letter-spacing:.15em}
+    .eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--lime-400);box-shadow:0 0 0 5px rgba(216,247,89,.27)}
+    h1,h2,h3,p{margin-top:0}
+    .hero h1{max-width:600px;margin:17px 0 17px;font-size:clamp(42px,4.15vw,60px);line-height:.99;letter-spacing:-.07em;font-weight:800;text-wrap:balance;color:var(--gray-900)}
+    .hero-heading-line{display:block}
+    .hero h1 .accent{text-decoration:underline;text-decoration-color:var(--lime-300);text-decoration-thickness:.14em;text-underline-offset:.05em;text-decoration-skip-ink:none}
+    .hero-description{max-width:555px;margin:0;color:var(--ink-soft);font-size:16px;line-height:1.72;text-wrap:pretty}
+    .hero-actions{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:21px;margin-top:24px}
+    .hero-actions .btn{min-height:52px;padding-inline:27px}
+    .hero-actions .btn-lime{min-width:175px;background:var(--gray-900);color:var(--white);box-shadow:0 12px 28px rgba(20,20,17,.14)}
+    .hero-actions .btn-lime:hover{background:var(--black);box-shadow:0 15px 32px rgba(20,20,17,.18)}
+    .hero-actions .btn-outline{min-height:44px;padding-inline:0;border:0;background:transparent;color:var(--gray-900);box-shadow:none}
+    .hero-showcase{display:flex;align-items:center;gap:13px;max-width:560px;margin-top:32px;padding-top:17px;border-top:1px solid rgba(20,20,17,.12)}
+    .hero-showcase-label{flex:0 0 auto;color:rgba(20,20,17,.48);font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+    .hero-showcase-names{color:rgba(20,20,17,.78);font-size:12px;font-weight:700;line-height:1.6}
+    .hero-photo-stage{position:relative;z-index:1;display:grid;place-items:end center;align-self:stretch;min-height:560px;margin:-7px -14px -36px 0;overflow:visible}
+    .hero-photo-stage:before{content:"";position:absolute;z-index:0;right:4%;bottom:3%;width:90%;height:79%;border-radius:49% 47% 25% 39%;background:radial-gradient(ellipse at 48% 40%,rgba(216,247,89,.19),rgba(242,242,237,.78) 56%,rgba(255,255,255,0) 84%);transform:rotate(-8deg)}
+    .hero-person{position:relative;z-index:1;display:block;width:auto;height:clamp(500px,45vw,625px);max-width:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 22px 32px rgba(20,20,17,.10))}
+    .hero-floating-card{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;max-width:205px;padding:12px 15px;border:1px solid rgba(20,20,17,.08);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:0 16px 36px rgba(20,20,17,.10);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+    .hero-floating-card--top{top:16%;right:-1%}
+    .hero-floating-card--bottom{bottom:16%;left:-3%}
+    .hero-float-icon{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:11px;background:var(--lime-300);color:var(--gray-900);font-size:10px;font-weight:900;letter-spacing:-.04em}
+    .hero-float-copy{display:grid;gap:2px;min-width:0}
+    .hero-float-copy small{color:rgba(20,20,17,.49);font-size:8px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+    .hero-float-copy strong{color:var(--gray-900);font-size:10px;line-height:1.35}
+
+    .section{padding:112px 0}
+    .section-light{background:var(--white)}
+    .section-soft{background:var(--gray-50)}
+    #introduction{background:linear-gradient(180deg,var(--white) 0%,var(--gray-50) 100%)}
+    #extras{background:linear-gradient(115deg,var(--white) 0%,var(--gray-50) 100%)}
+    #about{background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%)}
+    .hero + .section{padding-top:48px}
+    .section-head{max-width:760px;margin:0 auto 46px;text-align:center}
+    .section-head .eyebrow{color:rgba(20,20,17,.58)}
+    .section-head h2,.intro-title{margin:0 0 16px;font-size:clamp(34px,4.6vw,58px);line-height:1.04;letter-spacing:-.058em;font-weight:720;text-wrap:balance}
+    .section-head p,.section-copy{max-width:650px;margin:0 auto;color:var(--ink-soft);font-size:16px;line-height:1.75;text-wrap:pretty}
+    .intro-wrap{display:grid;grid-template-columns:1fr .82fr;gap:72px;align-items:center}
+    .intro-title{max-width:610px}
+    .intro-copy{max-width:550px;color:var(--ink-soft);font-size:17px;line-height:1.8}
+    .intro-mark{position:relative;min-height:290px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);border-radius:30px;background:radial-gradient(circle at 55% 50%,rgba(216,247,89,.38),transparent 34%),var(--gray-50)}
+    .intro-mark:before,.intro-mark:after{content:"";position:absolute;border:1px solid rgba(20,20,17,.11);border-radius:50%}
+    .intro-mark:before{width:240px;height:240px}.intro-mark:after{width:175px;height:175px}
+    .intro-mark img{position:relative;z-index:2;width:94px;height:94px;object-fit:contain;filter:drop-shadow(0 12px 24px rgba(20,20,17,.14))}
+    .intro-mark span{position:absolute;z-index:3;right:18px;bottom:18px;padding:9px 13px;border-radius:999px;background:var(--white);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+
+    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .service-card{position:relative;min-height:300px;padding:28px;overflow:hidden;border:1px solid rgba(20,20,17,.09);border-radius:var(--radius-card);background:var(--white);transition:transform .22s ease,box-shadow .22s ease}
+    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft)}
+    .service-card.featured{background:var(--lime-300);border-color:rgba(20,20,17,.05)}
+    .service-no{width:42px;height:42px;margin-bottom:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.7);font-size:12px;font-weight:850}
+    .service-card h3{max-width:260px;margin-bottom:10px;font-size:21px;line-height:1.15;letter-spacing:-.04em}
+    .service-card p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.7}
+    .service-card .text-link{position:absolute;right:25px;bottom:24px;font-size:12px;font-weight:800}
+
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+    .price-card{position:relative;display:flex;flex-direction:column;min-height:520px;padding:27px;border:1px solid rgba(20,20,17,.12);border-radius:26px;background:var(--white);box-shadow:0 14px 38px rgba(20,20,17,.045)}
+    .price-card.featured{border-color:rgba(20,20,17,.10);background:var(--lime-300);box-shadow:0 20px 46px rgba(196,240,19,.16);transform:translateY(-9px)}
+    .price-badge{align-self:flex-start;margin:0 0 15px;padding:7px 10px;border-radius:999px;background:var(--gray-50);font-size:9px;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+    .featured .price-badge{background:rgba(255,255,255,.55)}
+    .price-name{min-height:40px;margin:0;font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+    .price-value{margin:19px 0 4px;font-size:clamp(30px,3vw,40px);font-weight:800;letter-spacing:-.065em;line-height:1.1;white-space:nowrap}
+    .price-caption{margin:0 0 20px;color:var(--ink-faint);font-size:11px}
+    .price-rule{height:1px;margin:0 0 19px;background:var(--line)}
+    .price-list{display:grid;gap:12px;margin:0 0 24px;padding:0;list-style:none}
+    .price-list li{display:flex;gap:9px;color:var(--ink-soft);font-size:13px;line-height:1.45}
+    .price-list li:before{content:"+";color:#779000;font-weight:900}
+    .price-special{margin:auto 0 12px;padding:15px;border:1px solid rgba(20,20,17,.20);border-radius:15px;background:rgba(255,255,255,.35)}
+    .price-special small{display:block;margin-bottom:4px;font-size:9px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+    .price-special strong{display:block;font-size:13px;line-height:1.4}
+    .price-card .btn{width:100%;margin-top:auto}
+    .price-card.featured .btn{background:var(--gray-900);color:var(--white);box-shadow:none}
+    .price-note{margin:25px 0 0;color:var(--ink-faint);font-size:12px;text-align:center}
+
+    .extras-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:72px;align-items:start}
+    .extras-layout h2{max-width:460px;margin:0 0 18px;font-size:clamp(36px,4.8vw,58px);line-height:1.02;letter-spacing:-.06em}
+    .extras-layout .lead{max-width:420px;color:var(--ink-soft);font-size:16px;line-height:1.75}
+    .extras-list{border-top:1px solid var(--line)}
+    .extra-row{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+    .extra-row .n{font-size:11px;font-weight:850;color:rgba(20,20,17,.42)}
+    .extra-row h3{margin:0 0 5px;font-size:16px;letter-spacing:-.02em}
+    .extra-row p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.65}
+
+    .portfolio-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+    .portfolio-top .section-head{margin:0;text-align:left}
+    .portfolio-top .section-head p{margin-left:0}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+    .work-card{min-width:0;overflow:hidden;border:1px solid rgba(20,20,17,.09);border-radius:25px;background:var(--white);box-shadow:0 16px 42px rgba(20,20,17,.06);transition:transform .22s ease,box-shadow .22s ease}
+    .work-card:hover{transform:translateY(-5px);box-shadow:0 25px 55px rgba(20,20,17,.12)}
+    .work-media{position:relative;overflow:hidden;aspect-ratio:1280/840;background:var(--white)}
+    .work-media img{width:100%;height:100%;object-fit:contain;object-position:top center;background:var(--gray-50);transition:none}
+    .work-card:hover .work-media img{transform:none}
+    .work-label{position:absolute;left:14px;top:14px;padding:7px 10px;border:1px solid rgba(255,255,255,.48);border-radius:999px;background:rgba(255,255,255,.86);color:var(--gray-900);font-size:9px;font-weight:850;letter-spacing:.07em;text-transform:uppercase;backdrop-filter:blur(8px)}
+    .work-body{padding:20px;display:flex;flex-direction:column;min-height:200px}
+    .work-meta{margin-bottom:8px;color:var(--ink-faint);font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+    .work-body h3{margin:0 0 8px;font-size:21px;letter-spacing:-.04em}
+    .work-body p{margin:0 0 18px;color:var(--ink-soft);font-size:13px;line-height:1.6}
+    .work-body .btn{margin-top:auto;align-self:flex-start;min-height:44px;padding-inline:17px;font-size:12px}
+    .portfolio-note{margin:24px 0 0;color:var(--ink-faint);font-size:12px}
+
+    .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .process-step{position:relative;padding:25px 22px 29px 0}
+    .process-step+.process-step{padding-left:22px;border-left:1px solid var(--line)}
+    .process-step .step-num{display:block;margin-bottom:50px;color:rgba(20,20,17,.40);font-size:11px;font-weight:850;letter-spacing:.1em}
+    .process-step h3{margin:0 0 8px;font-size:16px;letter-spacing:-.02em}
+    .process-step p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.65}
+
+    .about-card{display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden;border:1px solid var(--line);border-radius:30px;background:var(--white);box-shadow:0 20px 50px rgba(20,20,17,.06)}
+    .about-copy{padding:clamp(30px,5vw,62px)}
+    .about-copy h2{max-width:550px;margin:0 0 18px;font-size:clamp(34px,4.2vw,54px);line-height:1.02;letter-spacing:-.06em}
+    .about-copy p{max-width:560px;margin:0;color:var(--ink-soft);font-size:16px;line-height:1.8}
+    .about-visual{position:relative;min-height:350px;display:grid;place-items:center;overflow:hidden;background:var(--gray-50)}
+    .about-visual:before,.about-visual:after{content:"";position:absolute;border:1px solid rgba(20,20,17,.10);border-radius:50%}
+    .about-visual:before{width:360px;height:360px}.about-visual:after{width:260px;height:260px}
+    .about-visual img{position:relative;z-index:1;width:125px;height:125px;object-fit:contain;filter:drop-shadow(0 15px 28px rgba(20,20,17,.16))}
+    .about-chip{position:absolute;z-index:2;right:20px;bottom:20px;padding:10px 14px;border-radius:999px;background:var(--lime-300);font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+
+    .faq-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;align-items:start}
+    .faq-layout h2{margin:0 0 14px;font-size:clamp(36px,4.8vw,58px);line-height:1.03;letter-spacing:-.06em}
+    .faq-layout .faq-intro{max-width:380px;color:var(--ink-soft);font-size:15px;line-height:1.75}
+    .faq-list{border-top:1px solid var(--line)}
+    .faq-item{border-bottom:1px solid var(--line)}
+    .faq-item summary{position:relative;min-height:64px;padding:19px 42px 19px 0;display:flex;align-items:center;cursor:pointer;list-style:none;font-size:15px;font-weight:700;letter-spacing:-.02em}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary:focus-visible{outline:3px solid var(--lime-400);outline-offset:2px;border-radius:8px}
+    .faq-item summary:after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:400;transition:transform .24s ease,color .24s ease}
+    .faq-item[open] summary:after{transform:translateY(-50%) rotate(45deg);color:#779000}
+    .faq-answer{max-width:690px;padding:0 38px 20px 0;color:var(--ink-soft);font-size:14px;line-height:1.75}
+    html.faq-motion-ready .faq-answer{height:0;overflow:hidden;padding:0 38px 0 0;opacity:0;transition:height .26s cubic-bezier(.2,.7,.2,1),opacity .18s ease,padding .26s ease}
+    html.faq-motion-ready .faq-item[open] .faq-answer{opacity:1;padding-bottom:20px}
+    html.faq-motion-ready .faq-item.is-closing .faq-answer{opacity:0;padding-bottom:0}
+
+    .final-cta{padding:50px 0;background:var(--white)}
+    .final-card{position:relative;overflow:hidden;padding:clamp(38px,6vw,75px);border-radius:32px;background:radial-gradient(circle at 90% 0%,rgba(255,255,255,.45),transparent 37%),linear-gradient(135deg,var(--lime-300),var(--lime-400));color:var(--black)}
+    .final-card h2{max-width:750px;margin:0 0 16px;font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.07em}
+    .final-card p{max-width:620px;margin:0 0 26px;color:rgba(20,20,17,.74);font-size:16px;line-height:1.7}
+    .final-card .btn{background:var(--black);color:var(--white)}
+    .footer{position:relative;isolation:isolate;overflow:hidden;padding:58px 0 24px;background:radial-gradient(ellipse at 84% 8%,rgba(216,247,89,.11),transparent 30%),linear-gradient(145deg,var(--gray-900),var(--black));color:var(--white)}
+    .footer:before{content:"";position:absolute;z-index:-1;inset:0 0 auto;height:2px;background:linear-gradient(90deg,var(--lime-300),rgba(196,240,19,.22) 48%,transparent)}
+    .footer:after{content:"";position:absolute;z-index:-1;right:-190px;top:180px;width:480px;height:480px;border:1px solid rgba(216,247,89,.10);border-radius:50%;box-shadow:0 0 0 42px rgba(216,247,89,.025),0 0 0 84px rgba(216,247,89,.018);pointer-events:none}
+    .footer>.container{position:relative;z-index:1}
+    .footer-callout{position:relative;display:flex;align-items:center;justify-content:space-between;gap:30px;margin:0 0 52px;padding:clamp(26px,4.7vw,48px);overflow:hidden;border:1px solid rgba(20,20,17,.06);border-radius:30px;background:linear-gradient(125deg,var(--lime-300),var(--lime-400));color:var(--black)}
+    .footer-callout:after{content:"";position:absolute;right:86px;top:-138px;width:280px;height:280px;border:1px solid rgba(20,20,17,.16);border-radius:50%;box-shadow:0 0 0 30px rgba(20,20,17,.045),0 0 0 60px rgba(20,20,17,.028);pointer-events:none}
+    .footer-callout-copy{position:relative;z-index:1;max-width:650px}
+    .footer-callout .eyebrow{margin:0 0 12px;color:rgba(20,20,17,.65)}
+    .footer-callout h2{max-width:620px;margin:0 0 10px;font-size:clamp(32px,4.4vw,55px);line-height:1;letter-spacing:-.065em}
+    .footer-callout p{max-width:520px;margin:0;color:rgba(20,20,17,.72);font-size:14px;line-height:1.65}
+    .footer-callout-btn{position:relative;z-index:1;flex:0 0 auto;min-height:56px;padding:0 23px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;background:var(--black);color:var(--white);font-size:12px;font-weight:800;transition:transform .2s ease,box-shadow .2s ease}
+    .footer-callout-btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(20,20,17,.18)}
+    .footer-callout-btn:focus-visible{outline:3px solid var(--white);outline-offset:4px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr .75fr .75fr 1fr;gap:36px;padding-bottom:42px}
+    .footer .brand{color:var(--white)}
+    .footer .brand-text span{color:var(--lime-300)}
+    .footer-copy{max-width:330px;margin:18px 0 0;color:rgba(255,255,255,.62);font-size:13px;line-height:1.7}
+    .footer h3{margin:5px 0 16px;color:rgba(255,255,255,.48);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+    .footer-links{display:grid;gap:11px}
+    .footer-links a{width:fit-content;color:rgba(255,255,255,.82);font-size:13px;overflow-wrap:anywhere}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.48);font-size:11px}
+    .footer-bottom a{color:rgba(255,255,255,.72)}
+    .mobile-cta{display:none}
+    .reveal{opacity:1;transform:none}
+
+    @media(max-width:1000px){
+      .nav-links{gap:14px}.nav-links a{font-size:11px}
+      .site-header{width:calc(100% - 56px);padding-inline:22px}
+      .hero-shell{width:calc(100% - 56px);grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);min-height:610px;gap:12px;padding-inline:38px}
+      .hero h1{font-size:clamp(40px,5.1vw,52px)}
+      .hero-photo-stage{min-height:520px;margin-right:-8px}
+      .hero-person{height:clamp(440px,54vw,570px)}
+      .intro-wrap,.extras-layout,.faq-layout{gap:40px}
+      .footer-grid{grid-template-columns:1.2fr 1fr 1fr;gap:28px}.footer-contact{grid-column:2/4}
+    }
+    @media(max-width:760px){
+      .container{width:min(100% - 36px,var(--content))}
+      .site-header{width:calc(100% - 24px);top:7px;margin-top:10px;padding:7px 8px 7px 11px;gap:8px;border-radius:22px 22px 0 0}
+      .brand{font-size:12px;gap:6px}.brand img{width:31px;height:31px}
+      .menu-toggle{display:block;flex:0 0 auto}
+      .header-actions>.header-cta{display:none}
+      .nav-links{position:absolute;top:calc(100% + 9px);left:0;right:0;display:none;align-items:stretch;gap:0;padding:8px;border:1px solid var(--line);border-radius:22px;background:var(--white);box-shadow:0 18px 40px rgba(20,20,17,.12);backdrop-filter:none;-webkit-backdrop-filter:none}
+      .nav-links.open{display:grid}
+      .nav-links a{padding:13px 14px;border-radius:13px;font-size:14px}
+      .nav-links a:hover{background:var(--gray-50)}
+      .header-actions{gap:7px}.lang-switch button{min-width:31px;height:30px}
+      .hero{padding:0 0 30px}
+      .hero-shell{width:calc(100% - 24px);min-height:0;grid-template-columns:1fr;gap:12px;padding:28px 22px 21px;border-radius:0 0 24px 24px}
+      .hero-copy{max-width:none;margin:0;padding:0;text-align:left}
+      .hero .eyebrow{margin-bottom:9px;font-size:8px;letter-spacing:.12em}
+      .hero h1{max-width:540px;margin:13px 0 12px;font-size:clamp(36px,8.7vw,47px);line-height:1;letter-spacing:-.065em}
+      .hero-description{max-width:520px;margin:0;font-size:14px;line-height:1.58}
+      .hero-actions{justify-content:flex-start;gap:17px;margin-top:18px}
+      .hero-actions .btn{min-height:48px}
+      .hero-actions .btn-lime{min-width:158px;padding-inline:20px}
+      .hero-actions .btn-outline{font-size:12px}
+      .hero-showcase{max-width:none;flex-wrap:wrap;gap:7px 10px;margin-top:20px;padding-top:12px}
+      .hero-showcase-label{font-size:8px}
+      .hero-showcase-names{font-size:11px}
+      .hero-photo-stage{grid-row:2;min-height:clamp(315px,104vw,430px);margin:0 -8px -18px;align-self:auto}
+      .hero-photo-stage:before{right:5%;bottom:3%;width:88%;height:82%}
+      .hero-person{height:clamp(340px,104vw,440px);max-width:100%;filter:none}
+      .hero-floating-card{display:none;max-width:180px;padding:9px 11px;border-radius:14px}
+      .hero-floating-card--top{top:8%;right:-2%}
+      .hero-floating-card--bottom{display:none}
+      .hero-float-icon{width:28px;height:28px;flex-basis:28px;border-radius:9px;font-size:9px}
+      .hero-float-copy small{font-size:7px}.hero-float-copy strong{font-size:9px}
+      .section{padding:78px 0}
+      .hero + .section{padding-top:44px}
+      .section-head{margin-bottom:32px}.section-head h2,.intro-title{font-size:clamp(32px,9vw,44px)}
+      .section-head p,.section-copy{font-size:14px}
+      .intro-wrap{grid-template-columns:1fr;gap:25px}.intro-mark{min-height:220px;order:-1}.intro-mark:before{width:200px;height:200px}.intro-mark:after{width:145px;height:145px}
+      .service-grid{grid-template-columns:1fr;gap:12px}.service-card{min-height:245px;padding:23px}.service-no{margin-bottom:28px}
+      .pricing-grid{grid-template-columns:1fr;gap:14px}.price-card{min-height:auto;padding:23px}.price-card.featured{transform:none}.price-list{gap:10px}.price-value{font-size:36px}
+      .extras-layout{grid-template-columns:1fr;gap:24px}.extras-layout h2{font-size:clamp(35px,9vw,48px)}
+      .portfolio-top{display:block;margin-bottom:27px}.portfolio-top .section-head{margin-bottom:0}.portfolio-grid{grid-template-columns:1fr;gap:15px}.work-media{aspect-ratio:1.38}.work-body{min-height:0;padding:18px}.work-body .btn{width:100%;min-height:48px;justify-content:center}
+      .process-grid{grid-template-columns:1fr 1fr}.process-step{padding:20px 12px 24px 0}.process-step+.process-step{padding-left:14px}.process-step:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}.process-step:nth-child(4){border-top:1px solid var(--line)}.process-step .step-num{margin-bottom:23px}
+      .about-card{grid-template-columns:1fr}.about-visual{min-height:220px;order:-1}.about-visual:before{width:230px;height:230px}.about-visual:after{width:165px;height:165px}.about-visual img{width:82px;height:82px}.about-copy{padding:28px}
+      .faq-layout{grid-template-columns:1fr;gap:22px}.faq-item summary{font-size:14px}.faq-answer{font-size:13px}
+      .final-cta{padding:35px 0}.final-card{border-radius:25px;padding:32px 25px}.final-card h2{font-size:clamp(39px,10vw,52px)}.final-card p{font-size:14px}.final-card .btn{width:100%}
+      .footer{padding:40px 0 20px}.footer-callout{display:grid;gap:20px;margin-bottom:38px;padding:25px 22px;border-radius:24px}.footer-callout:after{right:-155px;top:-118px;width:250px;height:250px}.footer-callout h2{max-width:440px;font-size:clamp(31px,8.8vw,43px)}.footer-callout p{font-size:13px}.footer-callout-btn{width:100%;min-height:52px}.footer-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 18px}.footer-brand{grid-column:1/-1}.footer-contact{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-direction:column;gap:10px}
+      .mobile-cta{position:fixed;z-index:45;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));left:12px;min-height:54px;padding:0 18px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(20,20,17,.94);color:var(--lime-300);font-size:13px;font-weight:800;box-shadow:0 10px 34px rgba(20,20,17,.22);transition:opacity .2s ease,transform .2s ease}
+      .mobile-cta.hidden{opacity:0;pointer-events:none;transform:translateY(14px)}
+      body{padding-bottom:76px}
+    }
+    @media(max-width:380px){
+      .container{width:calc(100% - 30px)}
+      .hero-shell{width:calc(100% - 24px);padding:24px 16px 18px;border-radius:0 0 22px 22px}
+      .hero h1{font-size:clamp(34px,10vw,38px)}.hero-photo-stage{min-height:310px;margin-inline:-5px}.hero-person{height:330px}.hero-floating-card--top{top:7%;right:-3%}
+      .hero-actions .btn{font-size:12px}.brand{font-size:11px}
+      .intro-copy{font-size:15px}.price-card{padding:20px}.price-value{font-size:32px}
+      .work-body .btn{font-size:11px}.footer-grid{gap:23px 12px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+    /* Nuvora editorial refinement */
+    .hero{background:var(--gray-900);padding-bottom:24px}
+    .hero-shell{background:var(--gray-900);border-color:rgba(255,255,255,.08);box-shadow:none;color:#f7f7f0}
+    .hero-shell:before{background:radial-gradient(ellipse at 76% 48%,rgba(216,247,89,.09),transparent 35%),linear-gradient(110deg,#141411,#1c1c17)}
+    .hero h1,.hero .hero-showcase-names{color:#f7f7f0}.hero .hero-description{color:rgba(255,255,255,.68)}
+    .hero .eyebrow,.hero-showcase-label{color:rgba(255,255,255,.58)}.hero-showcase{border-color:rgba(255,255,255,.16)}
+    .hero h1 .accent{text-decoration-color:var(--lime-300)}.hero-actions .btn-lime{background:var(--lime-300);color:var(--gray-900);box-shadow:none}.hero-actions .btn-lime:hover{background:var(--lime-400)}
+    .hero-actions .btn-outline{color:#fff}.hero-photo-stage:before{background:radial-gradient(ellipse at 50% 48%,rgba(216,247,89,.11),rgba(255,255,255,.04) 56%,transparent 84%)}
+    .section-dark{background:var(--gray-900);color:#f7f7f0}.section-dark .section-head .eyebrow,.section-dark .section-head p{color:rgba(255,255,255,.62)}
+    .section-dark .section-head h2{color:#f7f7f0}.section-dark .portfolio-note{color:rgba(255,255,255,.55)}
+    .section-dark .work-card{background:#1c1c18;border-color:rgba(255,255,255,.12);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+    .section-dark .work-body h3{color:#f7f7f0}.section-dark .work-body p,.section-dark .work-meta{color:rgba(255,255,255,.64)}
+    .section-dark .work-media{background:#24241f}.section-dark .work-media img{object-fit:cover;object-position:top center;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+    .section-dark .work-card:hover .work-media img{transform:scale(1.035)}
+    .section-dark .work-label{background:rgba(20,20,17,.82);color:#fff;border-color:rgba(255,255,255,.25)}
+    #about .about-card{background:#1c1c18;border-color:rgba(255,255,255,.14);box-shadow:none}
+    #about .about-copy h2{color:#f7f7f0}#about .about-copy p:not(.eyebrow){color:rgba(255,255,255,.66)}#about .about-copy .eyebrow{color:rgba(255,255,255,.58)}
+    #about .about-visual{background:#24241f}#about .about-visual:before,#about .about-visual:after{border-color:rgba(255,255,255,.13)}
+    .nav-links a{position:relative;padding-block:7px}.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--lime-400);transition:right .24s ease}
+    .nav-links a:hover:after,.nav-links a[aria-current="location"]:after{right:0}.nav-links a[aria-current="location"]{color:var(--gray-900)}
+    .site-header{animation:header-in .55s both}.hero-copy,.hero-photo-stage{animation:hero-in .65s .08s both}
+    @keyframes header-in{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+    @keyframes hero-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    .menu-toggle{position:relative}.menu-toggle span{transition:transform .22s ease,opacity .18s ease}
+    .menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(3px) rotate(45deg)}.menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-3px) rotate(-45deg)}
+    body.menu-open{overflow:hidden;touch-action:none}.section-dark .work-body .btn{background:var(--lime-300);color:var(--gray-900)}
+    @media(max-width:760px){.hero{padding-bottom:30px}.hero-shell{background:#141411}.hero-photo-stage{min-height:clamp(315px,104vw,430px)}.hero-person{height:clamp(340px,104vw,440px)}.nav-links.open a{animation:nav-item-in .28s both}.nav-links.open a:nth-child(2){animation-delay:.035s}.nav-links.open a:nth-child(3){animation-delay:.07s}.nav-links.open a:nth-child(4){animation-delay:.105s}.nav-links.open a:nth-child(5){animation-delay:.14s}}
+    @keyframes nav-item-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Nuvora.webdev, home">
+      <img src="./assets/images/nuvora-logo.webp" width="35" height="35" alt="Logo Nuvora.webdev">
+      <span class="brand-text">NUVORA<span>.WEBDEV</span></span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Navigasi utama">
+      <a href="#home" data-id="Beranda" data-en="Home">Beranda</a>
+      <a href="#services" data-id="Layanan" data-en="Services">Layanan</a>
+      <a href="#pricing" data-id="Harga" data-en="Pricing">Harga</a>
+      <a href="#work" data-id="Portofolio" data-en="Portfolio">Portofolio</a>
+      <a href="#about" data-id="Tentang" data-en="About">Tentang</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Pilih bahasa">
+        <button type="button" data-set-lang="id" aria-pressed="true">ID</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-lime header-cta" href="#contact" data-id="Konsultasi" data-en="Let's Talk">Konsultasi</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span><span data-id="DESAIN &amp; PENGEMBANGAN WEBSITE" data-en="WEBSITE DESIGN &amp; DEVELOPMENT">DESAIN &amp; PENGEMBANGAN WEBSITE</span></p>
+          <h1 id="hero-title"><span class="hero-heading-line" data-id="Kami membuat website" data-en="We create professional">Kami membuat website</span> <span class="hero-heading-line" data-id="professional untuk" data-en="websites that help">professional untuk</span> <span class="hero-heading-line accent" data-id="mendukung bisnis terus maju" data-en="businesses move forward.">mendukung bisnis terus maju</span></h1>
+          <p class="hero-description" data-id="Kami merancang website yang menampilkan nilai bisnismu dengan jelas dan memudahkan pelanggan mengambil langkah berikutnya." data-en="We design websites that communicate your value clearly and make the next step easy for customers.">Kami merancang website yang menampilkan nilai bisnismu dengan jelas dan memudahkan pelanggan mengambil langkah berikutnya.</p>
+          <div class="hero-actions">
+            <a class="btn btn-lime" href="#contact"><span data-id="Mulai Proyek" data-en="Start a Project">Mulai Proyek</span><span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline" href="#work"><span data-id="Lihat Portofolio" data-en="Explore Portfolio">Lihat Portofolio</span><span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="hero-showcase">
+            <span class="hero-showcase-label" data-id="KONSEP PILIHAN" data-en="FEATURED CONCEPTS">KONSEP PILIHAN</span>
+            <span class="hero-showcase-names">West Coffee&nbsp; · &nbsp;D'Rasa&nbsp; · &nbsp;Assyifa Dental</span>
+          </div>
+        </div>
+        <div class="hero-photo-stage" role="group" aria-label="Portrait pribadi pemilik Nuvora">
+          <img class="hero-person" src="./assets/images/profile-photo.webp" width="900" height="1256" data-alt-id="Portrait pribadi pemilik Nuvora memegang laptop." data-alt-en="Portrait of the Nuvora owner holding a laptop." alt="Portrait pribadi pemilik Nuvora memegang laptop." fetchpriority="high" decoding="async">
+          <div class="hero-floating-card hero-floating-card--top">
+            <span class="hero-float-icon" aria-hidden="true">M</span>
+            <span class="hero-float-copy"><small data-id="DIBUAT RESPONSIF" data-en="RESPONSIVE BY DESIGN">DIBUAT RESPONSIF</small><strong data-id="Nyaman di setiap layar" data-en="Comfortable on every screen">Nyaman di setiap layar</strong></span>
+          </div>
+          <div class="hero-floating-card hero-floating-card--bottom">
+            <span class="hero-float-icon" aria-hidden="true">WA</span>
+            <span class="hero-float-copy"><small data-id="FITUR PILIHAN" data-en="FEATURED FEATURE">FITUR PILIHAN</small><strong data-id="Form WhatsApp custom" data-en="Custom WhatsApp form">Form WhatsApp custom</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="introduction">
+      <div class="container intro-wrap">
+        <div>
+          <p class="eyebrow" data-id="Kehadiran digital yang dirancang cermat" data-en="A considered digital presence">Kehadiran digital yang dirancang cermat</p>
+          <h2 class="intro-title"><span data-id="Lebih dari sekadar website." data-en="More than just a website.">Lebih dari sekadar website.</span><br><span data-id="Cara yang lebih baik untuk hadir secara digital." data-en="A better way to show up digitally.">Cara yang lebih baik untuk hadir secara digital.</span></h2>
+          <p class="intro-copy" data-id="Setiap bisnis punya sesuatu yang layak dikenal. Kami menerjemahkan potensi itu menjadi pengalaman digital yang mengomunikasikan nilai, membangun kepercayaan, dan menghadirkan koneksi bermakna." data-en="Every business has something worth bringing to the world. We translate that potential into thoughtful digital experiences that communicate value, build trust, and make meaningful connections.">Setiap bisnis punya sesuatu yang layak dikenal. Kami menerjemahkan potensi itu menjadi pengalaman digital yang mengomunikasikan nilai, membangun kepercayaan, dan menghadirkan koneksi bermakna.</p>
+        </div>
+        <div class="intro-mark"><img src="./assets/images/nuvora-logo.webp" width="1064" height="1064" alt="Logo resmi Nuvora.webdev"><span data-id="Digital, dengan tujuan." data-en="Digital, with intention.">Digital, dengan tujuan.</span></div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-id="Layanan Kami" data-en="What We Do">Layanan Kami</p>
+          <h2 data-id="Yang bisa kami wujudkan." data-en="What we bring to the table.">Yang bisa kami wujudkan.</h2>
+          <p data-id="Jasa pengembangan website bisnis, landing page, dan desain ulang website yang disesuaikan dengan tujuan usaha Anda." data-en="Professional website design, development, landing page, and redesign services shaped around your business goals.">Jasa pengembangan website bisnis, landing page, dan desain ulang website yang disesuaikan dengan tujuan usaha Anda.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card featured"><span class="service-no">01</span><h3 data-id="Desain & Pengembangan Website" data-en="Website Design & Development">Desain & Pengembangan Website</h3><p data-id="Website bisnis profesional untuk mengomunikasikan merek, memperkenalkan layanan, dan mendukung tujuan usaha Anda." data-en="Professional business websites designed to communicate your brand, present your services, and support your business goals.">Website bisnis profesional untuk mengomunikasikan merek, memperkenalkan layanan, dan mendukung tujuan usaha Anda.</p><a class="text-link" href="#contact"><span data-id="Diskusikan kebutuhan" data-en="Discuss your needs">Diskusikan kebutuhan</span> ↗</a></article>
+          <article class="service-card"><span class="service-no">02</span><h3 data-id="Pengembangan Landing Page" data-en="Landing Page Development">Pengembangan Landing Page</h3><p data-id="Pengalaman digital yang terfokus pada produk, layanan, kampanye, atau penawaran tertentu." data-en="Focused digital experiences designed around a specific product, service, campaign, or offer.">Pengalaman digital yang terfokus pada produk, layanan, kampanye, atau penawaran tertentu.</p><a class="text-link" href="#contact"><span data-id="Diskusikan kebutuhan" data-en="Discuss your needs">Diskusikan kebutuhan</span> ↗</a></article>
+          <article class="service-card"><span class="service-no">03</span><h3 data-id="Desain Ulang Website" data-en="Website Redesign">Desain Ulang Website</h3><p data-id="Mengubah website lama menjadi pengalaman digital yang premium, fungsional, dan selaras." data-en="Transform outdated websites into premium, functional, and cohesive digital experiences.">Mengubah website lama menjadi pengalaman digital yang premium, fungsional, dan selaras.</p><a class="text-link" href="#contact"><span data-id="Diskusikan kebutuhan" data-en="Discuss your needs">Diskusikan kebutuhan</span> ↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-id="Harga Transparan" data-en="Transparent Pricing">Harga Transparan</p>
+          <h2 data-id="Pilih paket website yang tepat untuk bisnismu." data-en="The right website package for your business.">Pilih paket website yang tepat untuk bisnismu.</h2>
+          <p data-id="Setiap paket menampilkan harga mulai. Lingkup dan biaya akhir akan dikonfirmasi bersama sebelum pengerjaan dimulai." data-en="Every package shows a starting price. We will confirm the final scope and cost with you before work begins.">Setiap paket menampilkan harga mulai. Lingkup dan biaya akhir akan dikonfirmasi bersama sebelum pengerjaan dimulai.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <span class="price-badge" data-id="Paket 01" data-en="Package 01">Paket 01</span><h3 class="price-name" data-id="Landing Page" data-en="Landing Page">Landing Page</h3>
+            <p class="price-value" data-price-id="Rp750.000" data-price-en="Rp 750,000">Rp750.000</p><p class="price-caption" data-id="Harga mulai" data-en="Starting price">Harga mulai</p><div class="price-rule"></div>
+            <ul class="price-list"><li data-id="1 halaman website" data-en="1 website page">1 halaman website</li><li data-id="Desain kustom sesuai kebutuhan bisnis" data-en="Custom design based on business requirements">Desain kustom sesuai kebutuhan bisnis</li><li data-id="Responsif" data-en="Responsive layout">Responsif</li><li data-id="Integrasi kontak dan CTA" data-en="Contact and CTA integration">Integrasi kontak dan CTA</li><li data-id="Domain .my.id gratis" data-en="Free .my.id domain">Domain .my.id gratis</li><li data-id="2 revisi minor" data-en="2 minor revisions">2 revisi minor</li></ul>
+            <a class="btn btn-outline" href="#contact"><span data-id="Pilih paket" data-en="Choose package">Pilih paket</span> ↗</a>
+          </article>
+          <article class="price-card">
+            <span class="price-badge" data-id="Paket 02" data-en="Package 02">Paket 02</span><h3 class="price-name" data-id="Website Multi-Halaman" data-en="Multi-Page Website">Website Multi-Halaman</h3>
+            <p class="price-value" data-price-id="Rp1.990.000" data-price-en="Rp 1,990,000">Rp1.990.000</p><p class="price-caption" data-id="Harga mulai" data-en="Starting price">Harga mulai</p><div class="price-rule"></div>
+            <ul class="price-list"><li data-id="Hingga 5 halaman" data-en="Up to 5 pages">Hingga 5 halaman</li><li data-id="Desain visual kustom yang konsisten" data-en="Consistent custom visual design">Desain visual kustom yang konsisten</li><li data-id="Responsif dan sistem navigasi" data-en="Responsive layout and navigation">Responsif dan sistem navigasi</li><li data-id="Integrasi kontak dan CTA" data-en="Contact and CTA integration">Integrasi kontak dan CTA</li><li data-id="Domain .my.id gratis" data-en="Free .my.id domain">Domain .my.id gratis</li><li data-id="2 revisi minor" data-en="2 minor revisions">2 revisi minor</li></ul>
+            <a class="btn btn-outline" href="#contact"><span data-id="Pilih paket" data-en="Choose package">Pilih paket</span> ↗</a>
+          </article>
+          <article class="price-card featured">
+            <span class="price-badge" data-id="Paket Unggulan" data-en="Featured Package">Paket Unggulan</span><h3 class="price-name" data-id="Website Bisnis Profesional" data-en="Professional Business Website">Website Bisnis Profesional</h3>
+            <p class="price-value" data-price-id="Rp2.390.000" data-price-en="Rp 2,390,000">Rp2.390.000</p><p class="price-caption" data-id="Harga mulai" data-en="Starting price">Harga mulai</p><div class="price-rule"></div>
+            <ul class="price-list"><li data-id="Hingga 5 halaman" data-en="Up to 5 pages">Hingga 5 halaman</li><li data-id="Desain premium dan UX strategis" data-en="Premium design and strategic UX">Desain premium dan UX strategis</li><li data-id="CTA dan lead generation" data-en="CTA and lead generation">CTA dan lead generation</li><li data-id="Integrasi sesuai kebutuhan" data-en="Integrations based on project requirements">Integrasi sesuai kebutuhan</li><li data-id="Domain .my.id gratis" data-en="Free .my.id domain">Domain .my.id gratis</li><li data-id="2 revisi minor" data-en="2 minor revisions">2 revisi minor</li></ul>
+            <div class="price-special"><small data-id="Fitur khusus paket ini" data-en="Package feature">Fitur khusus paket ini</small><strong>Custom WhatsApp Contact Form</strong></div>
+            <a class="btn" href="#contact"><span data-id="Pilih paket" data-en="Choose package">Pilih paket</span> ↗</a>
+          </article>
+        </div>
+        <p class="price-note" data-id="Harga paket adalah harga mulai dan biaya akhir disepakati sesuai lingkup. Halaman tambahan di luar paket: Rp389.000 per halaman." data-en="Package prices are starting prices, with final cost agreed based on scope. Additional pages beyond the package: Rp389,000 per page.">Harga paket adalah harga mulai dan biaya akhir disepakati sesuai lingkup. Halaman tambahan di luar paket: Rp389.000 per halaman.</p>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="extras">
+      <div class="container extras-layout">
+        <div><p class="eyebrow" data-id="Lingkup fleksibel, dibahas bersama" data-en="Flexible scope, considered together">Lingkup fleksibel, dibahas bersama</p><h2 data-id="Butuh lebih dari paket standar?" data-en="Need something beyond the standard package?">Butuh lebih dari paket standar?</h2><p class="lead" data-id="Setiap bisnis punya kebutuhan yang berbeda. Item tambahan dibahas sesuai kebutuhan dan ruang lingkup proyek." data-en="Every business has different requirements. Additional items are discussed in line with your needs and project scope.">Setiap bisnis punya kebutuhan yang berbeda. Item tambahan dibahas sesuai kebutuhan dan ruang lingkup proyek.</p></div>
+        <div class="extras-list">
+          <article class="extra-row"><span class="n">01</span><div><h3 data-id="Revisi tambahan" data-en="Additional revisions">Revisi tambahan</h3><p data-id="Revisi di luar dua putaran minor yang termasuk dalam paket dihitung terpisah." data-en="Revisions beyond the two minor rounds included in a package are quoted separately.">Revisi di luar dua putaran minor yang termasuk dalam paket dihitung terpisah.</p></div></article>
+          <article class="extra-row"><span class="n">02</span><div><h3 data-id="Penambahan halaman" data-en="Additional pages">Penambahan halaman</h3><p data-id="Halaman tambahan di luar batas paket dikenakan biaya Rp389.000 per halaman." data-en="Additional pages beyond the package scope are Rp389,000 per page.">Halaman tambahan di luar batas paket dikenakan biaya Rp389.000 per halaman.</p></div></article>
+          <article class="extra-row"><span class="n">03</span><div><h3 data-id="Fitur khusus dan integrasi kompleks" data-en="Special features and complex integrations">Fitur khusus dan integrasi kompleks</h3><p data-id="Kebutuhan kustom ditinjau berdasarkan ruang lingkup dan kompleksitas sebelum biaya disetujui." data-en="Custom requirements are reviewed by scope and complexity before additional costs are approved.">Kebutuhan kustom ditinjau berdasarkan ruang lingkup dan kompleksitas sebelum biaya disetujui.</p></div></article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="work">
+      <div class="container">
+        <div class="portfolio-top">
+          <div class="section-head section-head-dark"><p class="eyebrow" data-id="Pilihan Karya" data-en="Selected Work">Pilihan Karya</p><h2 data-id="Dirancang dengan tujuan. Dibuat agar bermakna." data-en="Made with intention. Built to matter.">Dirancang dengan tujuan. Dibuat agar bermakna.</h2><p data-id="Intip portofolio digital Nuvora beserta studi konsep yang diberi label dengan jelas. Tanpa klien atau hasil proyek rekaan." data-en="A glimpse into Nuvora’s own digital portfolio alongside clearly labeled concept studies. No fictional clients or project results.">Intip portofolio digital Nuvora beserta studi konsep yang diberi label dengan jelas. Tanpa klien atau hasil proyek rekaan.</p></div>
+        </div>
+        <div class="portfolio-grid">
+          <article class="work-card">
+            <div class="work-media"><img src="./assets/images/west-coffee.webp" width="893" height="768" alt="Screenshot halaman utama demo West Coffee" loading="lazy" decoding="async"><span class="work-label" data-id="Demo Website 01" data-en="Demo Website 01">Demo Website 01</span></div>
+            <div class="work-body"><span class="work-meta" data-id="Demo Website 01" data-en="Demo Website 01">Demo Website 01</span><h3>West Coffee</h3><p data-id="Demo website kedai kopi spesialti dengan menu, cerita brand, informasi kunjungan, FAQ, dan galeri." data-en="A specialty coffee shop demo with menu, brand story, visit information, FAQ, and gallery.">Demo website kedai kopi spesialti dengan menu, cerita brand, informasi kunjungan, FAQ, dan galeri.</p><a class="btn btn-lime" href="https://nuvorawebdev-ofc.github.io/Demo-website-by-Nuvora-01/" target="_blank" rel="noopener noreferrer"><span data-id="Kunjungi Website" data-en="Visit Website">Kunjungi Website</span> ↗</a></div>
+          </article>
+          <article class="work-card">
+            <div class="work-media"><img src="./assets/images/drasa-restaurant.webp" width="893" height="768" alt="Screenshot halaman utama demo D'Rasa Indonesian Restaurant" loading="lazy" decoding="async"><span class="work-label" data-id="Demo Website 02" data-en="Demo Website 02">Demo Website 02</span></div>
+            <div class="work-body"><span class="work-meta" data-id="Demo Website 02" data-en="Demo Website 02">Demo Website 02</span><h3>D'Rasa Indonesian Restaurant</h3><p data-id="Demo restoran Indonesia yang menampilkan cerita kuliner, menu, pengalaman, dan formulir reservasi simulasi." data-en="An Indonesian restaurant demo featuring its culinary story, menu, experience, and simulated reservation form.">Demo restoran Indonesia yang menampilkan cerita kuliner, menu, pengalaman, dan formulir reservasi simulasi.</p><a class="btn btn-lime" href="https://nuvorawebdev-ofc.github.io/Demo-website-02/" target="_blank" rel="noopener noreferrer"><span data-id="Kunjungi Website" data-en="Visit Website">Kunjungi Website</span> ↗</a></div>
+          </article>
+          <article class="work-card">
+            <div class="work-media"><img src="./assets/images/assyifa-dental-clinic.webp" width="893" height="768" alt="Screenshot halaman utama demo Assyifa Dental Clinic" loading="lazy" decoding="async"><span class="work-label" data-id="Demo Website 03" data-en="Demo Website 03">Demo Website 03</span></div>
+            <div class="work-body"><span class="work-meta" data-id="Demo Website 03" data-en="Demo Website 03">Demo Website 03</span><h3>Assyifa Dental Clinic</h3><p data-id="Demo website klinik gigi dengan informasi layanan, tim demo, galeri, FAQ, serta janji temu simulasi." data-en="A dental clinic demo with service information, demo team, gallery, FAQ, and simulated appointment flow.">Demo website klinik gigi dengan informasi layanan, tim demo, galeri, FAQ, serta janji temu simulasi.</p><a class="btn btn-lime" href="https://nuvorawebdev-ofc.github.io/Demo-website-03/" target="_blank" rel="noopener noreferrer"><span data-id="Kunjungi Website" data-en="Visit Website">Kunjungi Website</span> ↗</a></div>
+          </article>
+        </div>
+        <p class="portfolio-note" data-id="Ketiga entri di atas adalah demo website, bukan klaim proyek klien atau hasil komersial." data-en="All entries above are demo websites, not client-project or commercial-results claims.">Ketiga entri di atas adalah demo website, bukan klaim proyek klien atau hasil komersial.</p>
+      </div>
+    </section>
+
+    <section class="section section-light" id="process">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow" data-id="Cara Kami Bekerja" data-en="How We Work">Cara Kami Bekerja</p><h2 data-id="Karya yang baik lahir dari proses yang cermat." data-en="Good work doesn’t happen by accident.">Karya yang baik lahir dari proses yang cermat.</h2><p data-id="Proses yang jelas menjaga setiap keputusan tetap sejalan dengan tujuan bisnis Anda—dari percakapan awal hingga peluncuran." data-en="A clear process keeps each decision connected to your business goals—from the first conversation through launch.">Proses yang jelas menjaga setiap keputusan tetap sejalan dengan tujuan bisnis Anda—dari percakapan awal hingga peluncuran.</p></div>
+        <div class="process-grid">
+          <article class="process-step"><span class="step-num">01 / DISCOVER</span><h3 data-id="Penjelajahan" data-en="Discover">Penjelajahan</h3><p data-id="Memahami bisnis, kebutuhan, audiens sasaran, dan tujuan website." data-en="Understand the business, requirements, target audience, and website objectives.">Memahami bisnis, kebutuhan, audiens sasaran, dan tujuan website.</p></article>
+          <article class="process-step"><span class="step-num">02 / DEFINE</span><h3 data-id="Perumusan" data-en="Define">Perumusan</h3><p data-id="Menentukan struktur website, strategi, arah visual, dan pengalaman pengguna." data-en="Establish the website structure, strategy, visual direction, and user experience.">Menentukan struktur website, strategi, arah visual, dan pengalaman pengguna.</p></article>
+          <article class="process-step"><span class="step-num">03 / BUILD</span><h3 data-id="Desain & Pembangunan" data-en="Design & Build">Desain & Pembangunan</h3><p data-id="Mewujudkan konsep yang disetujui menjadi website yang fungsional, responsif, dan terperinci." data-en="Turn the approved concept into a functional, responsive, and refined website.">Mewujudkan konsep yang disetujui menjadi website yang fungsional, responsif, dan terperinci.</p></article>
+          <article class="process-step"><span class="step-num">04 / LAUNCH</span><h3 data-id="Peluncuran & Dukungan" data-en="Launch & Support">Peluncuran & Dukungan</h3><p data-id="Melakukan pemeriksaan kualitas, deployment, dan dukungan pascapeluncuran sesuai kesepakatan." data-en="Perform quality assurance, deployment, and agreed post-launch support.">Melakukan pemeriksaan kualitas, deployment, dan dukungan pascapeluncuran sesuai kesepakatan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="about">
+      <div class="container">
+        <div class="about-card"><div class="about-copy"><p class="eyebrow" data-id="Mengapa Nuvora" data-en="Why Nuvora">Mengapa Nuvora</p><h2 data-id="Dirancang dengan pertimbangan. Diwujudkan dengan andal." data-en="Thoughtful by design. Reliable by execution.">Dirancang dengan pertimbangan. Diwujudkan dengan andal.</h2><p data-id="Nuvora adalah studio digital independen yang membangun pengalaman web dengan tujuan bagi bisnis—memperhatikan detail sekaligus gambaran besarnya." data-en="Nuvora is an independent digital studio creating purposeful web experiences for businesses—with care for the details and the bigger picture.">Nuvora adalah studio digital independen yang membangun pengalaman web dengan tujuan bagi bisnis—memperhatikan detail sekaligus gambaran besarnya.</p></div><div class="about-visual"><img src="./assets/images/nuvora-logo.webp" width="1064" height="1064" alt="Logo resmi Nuvora.webdev"><span class="about-chip" data-id="Independen · Penuh tujuan" data-en="Independent · Intentional">Independen · Penuh tujuan</span></div></div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="faq">
+      <div class="container faq-layout"><div><p class="eyebrow" data-id="Pertanyaan yang Sering Diajukan" data-en="Frequently Asked Questions">Pertanyaan yang Sering Diajukan</p><h2 data-id="Pertanyaan baik. Jawaban jelas." data-en="Good questions. Clear answers.">Pertanyaan baik. Jawaban jelas.</h2><p class="faq-intro" data-id="Masih ada pertanyaan? Hubungi kami untuk membicarakan proyek Anda." data-en="Still have a question? Get in touch and we can talk through your project.">Masih ada pertanyaan? Hubungi kami untuk membicarakan proyek Anda.</p></div>
+        <div class="faq-list" aria-label="Pertanyaan yang sering diajukan">
+          <details class="faq-item"><summary aria-controls="faq-answer-1" data-id="Berapa biaya pembuatan website?" data-en="How much does it cost to build a website?">Berapa biaya pembuatan website?</summary><div id="faq-answer-1" class="faq-answer" data-id="Pembuatan website dimulai dari Rp750.000 untuk Landing Page, Rp1.990.000 untuk Website Multi-Halaman, dan Rp2.390.000 untuk Website Bisnis Profesional. Harga akhir bergantung pada lingkup dan kompleksitas proyek." data-en="Website development starts at Rp750,000 for a Landing Page, Rp1,990,000 for a Multi-Page Website, and Rp 2,390,000 for a Professional Business Website. Final pricing depends on project scope and complexity.">Pembuatan website dimulai dari Rp750.000 untuk Landing Page, Rp1.990.000 untuk Website Multi-Halaman, dan Rp2.390.000 untuk Website Bisnis Profesional. Harga akhir bergantung pada lingkup dan kompleksitas proyek.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-2" data-id="Apa perbedaan Landing Page dan Website Multi-Halaman?" data-en="What is the difference between a Landing Page and a Multi-Page Website?">Apa perbedaan Landing Page dan Website Multi-Halaman?</summary><div id="faq-answer-2" class="faq-answer" data-id="Landing Page adalah satu halaman dengan tujuan tertentu. Website Multi-Halaman memiliki hingga lima halaman terstruktur untuk menampilkan layanan, produk, dan informasi bisnis." data-en="A Landing Page is one page focused on a specific goal. A Multi-Page Website has up to five organized pages for a business’s services, products, and information.">Landing Page adalah satu halaman dengan tujuan tertentu. Website Multi-Halaman memiliki hingga lima halaman terstruktur untuk menampilkan layanan, produk, dan informasi bisnis.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-3" data-id="Apa itu Website Bisnis Profesional?" data-en="What is a Professional Business Website?">Apa itu Website Bisnis Profesional?</summary><div id="faq-answer-3" class="faq-answer" data-id="Website Bisnis Profesional memiliki hingga lima halaman, desain premium berorientasi bisnis, serta konten, ajakan bertindak, integrasi kontak, dan bagian pendukung yang direncanakan secara strategis." data-en="A Professional Business Website has up to five pages, a business-focused premium design, and strategically planned content, calls to action, contact integrations, and supporting sections.">Website Bisnis Profesional memiliki hingga lima halaman, desain premium berorientasi bisnis, serta konten, ajakan bertindak, integrasi kontak, dan bagian pendukung yang direncanakan secara strategis.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-4" data-id="Berapa lama proses pembuatan website?" data-en="How long does website development take?">Berapa lama proses pembuatan website?</summary><div id="faq-answer-4" class="faq-answer" data-id="Waktu pengerjaan bergantung pada kompleksitas proyek, jumlah halaman, fitur yang dibutuhkan, serta kecepatan penyediaan materi dan umpan balik. Estimasi waktu akan dibahas sebelum pekerjaan dimulai." data-en="Timing depends on project complexity, page count, required features, and how quickly materials and feedback are provided. We will discuss an estimated timeline before work begins.">Waktu pengerjaan bergantung pada kompleksitas proyek, jumlah halaman, fitur yang dibutuhkan, serta kecepatan penyediaan materi dan umpan balik. Estimasi waktu akan dibahas sebelum pekerjaan dimulai.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-5" data-id="Apakah revisi sudah termasuk?" data-en="Are revisions included?">Apakah revisi sudah termasuk?</summary><div id="faq-answer-5" class="faq-answer" data-id="Ya. Setiap paket mencakup maksimal dua putaran revisi minor. Putaran tambahan atau perubahan besar di luar lingkup yang disepakati dapat dikenai biaya tambahan." data-en="Yes. Every package includes up to two rounds of minor revisions. Additional rounds or major changes outside the agreed scope may incur additional charges.">Ya. Setiap paket mencakup maksimal dua putaran revisi minor. Putaran tambahan atau perubahan besar di luar lingkup yang disepakati dapat dikenai biaya tambahan.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-6" data-id="Bisakah saya meminta fitur tambahan?" data-en="Can I request additional features?">Bisakah saya meminta fitur tambahan?</summary><div id="faq-answer-6" class="faq-answer" data-id="Bisa. Permintaan di luar lingkup awal akan ditinjau dan biaya tambahannya disampaikan untuk mendapat persetujuan sebelum pengerjaan." data-en="Yes. We will review requests outside the original scope and communicate any additional cost for your approval before proceeding.">Bisa. Permintaan di luar lingkup awal akan ditinjau dan biaya tambahannya disampaikan untuk mendapat persetujuan sebelum pengerjaan.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-7" data-id="Apakah website bisa dibuka di smartphone?" data-en="Will my website work on smartphones?">Apakah website bisa dibuka di smartphone?</summary><div id="faq-answer-7" class="faq-answer" data-id="Ya. Desain responsif sudah termasuk dan dirancang untuk smartphone, tablet, serta layar desktop." data-en="Yes. Responsive design is included, with layouts designed for smartphones, tablets, and desktop screens.">Ya. Desain responsif sudah termasuk dan dirancang untuk smartphone, tablet, serta layar desktop.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-8" data-id="Apakah saya bisa meminta desain ulang website?" data-en="Can I request a website redesign?">Apakah saya bisa meminta desain ulang website?</summary><div id="faq-answer-8" class="faq-answer" data-id="Ya. Desain ulang website adalah salah satu layanan Nuvora untuk bisnis yang ingin meningkatkan kehadiran digitalnya." data-en="Yes. Website redesign is one of Nuvora’s services for businesses looking to improve their digital presence.">Ya. Desain ulang website adalah salah satu layanan Nuvora untuk bisnis yang ingin meningkatkan kehadiran digitalnya.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-9" data-id="Bagaimana cara memulai proyek?" data-en="How do I start a project?">Bagaimana cara memulai proyek?</summary><div id="faq-answer-9" class="faq-answer" data-id="Hubungi Nuvora melalui WhatsApp atau email dengan informasi bisnis, kebutuhan proyek, dan tujuan Anda. Kami akan mendiskusikan layanan yang sesuai dan memberikan estimasi." data-en="Contact Nuvora through WhatsApp or email with your business information, project requirements, and goals. We will discuss a suitable service and provide an estimate.">Hubungi Nuvora melalui WhatsApp atau email dengan informasi bisnis, kebutuhan proyek, dan tujuan Anda. Kami akan mendiskusikan layanan yang sesuai dan memberikan estimasi.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-10" data-id="Apakah harga awal sudah termasuk domain dan hosting?" data-en="Does the starting price include domain and hosting?">Apakah harga awal sudah termasuk domain dan hosting?</summary><div id="faq-answer-10" class="faq-answer" data-id="Setiap paket sudah termasuk domain .my.id gratis. Kebutuhan dan biaya hosting bergantung pada proyek dan akan dibahas sebelum pengerjaan dimulai." data-en="Every package includes a free .my.id domain. Hosting requirements and fees depend on the project and will be discussed before work begins.">Setiap paket sudah termasuk domain .my.id gratis. Kebutuhan dan biaya hosting bergantung pada proyek dan akan dibahas sebelum pengerjaan dimulai.</div></details>
+          <details class="faq-item"><summary aria-controls="faq-answer-11" data-id="Apa saja praktik teknis dasar yang diterapkan saat membuat website?" data-en="Which basic technical practices are part of website development?">Apa saja praktik teknis dasar yang diterapkan saat membuat website?</summary><div id="faq-answer-11" class="faq-answer" data-id="Pembuatan website memperhatikan HTML semantik, judul halaman dan meta description yang sesuai, tampilan responsif, serta struktur halaman yang jelas. Ini adalah praktik pengembangan website, bukan layanan pengelolaan SEO berkala atau jaminan peringkat mesin pencari." data-en="Website development includes semantic HTML, appropriate page titles and meta descriptions, responsive layouts, and clear page structure. These are website development practices, not ongoing SEO management or a search-ranking guarantee.">Pembuatan website memperhatikan HTML semantik, judul halaman dan meta description yang sesuai, tampilan responsif, serta struktur halaman yang jelas. Ini adalah praktik pengembangan website, bukan layanan pengelolaan SEO berkala atau jaminan peringkat mesin pencari.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+      <div class="container"><div class="final-card"><p class="eyebrow" data-id="Langkah awal yang baik" data-en="A good place to begin">Langkah awal yang baik</p><h2 data-id="Mari bangun sesuatu yang bermakna." data-en="Let’s build something meaningful.">Mari bangun sesuatu yang bermakna.</h2><p data-id="Punya ide atau ingin meningkatkan kehadiran digital bisnis? Mari bicarakan hal yang bisa kita wujudkan bersama." data-en="Have an idea or looking to elevate your digital presence? Let’s talk about what we can create together.">Punya ide atau ingin meningkatkan kehadiran digital bisnis? Mari bicarakan hal yang bisa kita wujudkan bersama.</p><a class="btn" data-wa-id="Halo Nuvora! Saya ingin memulai percakapan tentang proyek website." data-wa-en="Hello Nuvora! I would like to start a conversation about my website project." href="https://wa.me/6285196322176?text=Halo%20Nuvora%21%20Saya%20ingin%20memulai%20percakapan%20tentang%20proyek%20website." target="_blank" rel="noopener noreferrer"><span data-id="Mulai Percakapan" data-en="Start a Conversation">Mulai Percakapan</span> ↗</a></div></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-callout">
+        <div class="footer-callout-copy"><p class="eyebrow" data-id="ADA IDE WEBSITE BARU?" data-en="HAVE A WEBSITE IDEA?">ADA IDE WEBSITE BARU?</p><h2 data-id="Mari mulai dengan percakapan." data-en="Let’s start with a conversation.">Mari mulai dengan percakapan.</h2><p data-id="Sampaikan kebutuhanmu langsung kepada Nuvora melalui WhatsApp." data-en="Tell Nuvora what you need directly on WhatsApp.">Sampaikan kebutuhanmu langsung kepada Nuvora melalui WhatsApp.</p></div>
+        <a class="footer-callout-btn" data-wa-id="Halo Nuvora, saya ingin membicarakan ide website baru." data-wa-en="Hello Nuvora, I would like to discuss my website idea." href="https://wa.me/6285196322176?text=Halo%20Nuvora%2C%20saya%20ingin%20membicarakan%20ide%20website%20baru." target="_blank" rel="noopener noreferrer"><span data-id="Hubungi via WhatsApp" data-en="Message on WhatsApp">Hubungi via WhatsApp</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="footer-grid">
+      <div class="footer-brand"><a class="brand" href="#home"><img src="./assets/images/nuvora-logo.webp" width="35" height="35" alt="Logo Nuvora.webdev"><span class="brand-text">NUVORA<span>.WEBDEV</span></span></a><p class="footer-copy" data-id="Nuvora adalah studio digital independen yang berfokus pada pengalaman web yang cermat, profesional, dan penuh tujuan bagi bisnis." data-en="Nuvora is an independent digital studio focused on creating thoughtful, professional, and purposeful web experiences for businesses.">Nuvora adalah studio digital independen yang berfokus pada pengalaman web yang cermat, profesional, dan penuh tujuan bagi bisnis.</p></div>
+      <div><h3 data-id="Jelajahi" data-en="Explore">Jelajahi</h3><div class="footer-links"><a href="#services" data-id="Layanan" data-en="Services">Layanan</a><a href="#pricing" data-id="Harga" data-en="Pricing">Harga</a><a href="#work" data-id="Portofolio" data-en="Portfolio">Portofolio</a></div></div>
+      <div><h3 data-id="Layanan" data-en="Services">Layanan</h3><div class="footer-links"><a href="#services" data-id="Pembuatan Website" data-en="Website Development">Pembuatan Website</a><a href="#services" data-id="Landing Page" data-en="Landing Page">Landing Page</a><a href="#services" data-id="Desain Ulang" data-en="Redesign">Desain Ulang</a></div></div>
+      <div class="footer-contact"><h3 data-id="Hubungi Kami" data-en="Say Hello">Hubungi Kami</h3><div class="footer-links"><a href="mailto:nuvorawebdev@gmail.com">nuvorawebdev@gmail.com</a><a href="https://wa.me/6285196322176" target="_blank" rel="noopener noreferrer">WhatsApp · +62 851-9632-2176</a><a href="https://www.instagram.com/nuvora.webdev/" target="_blank" rel="noopener noreferrer">Instagram · @nuvora.webdev</a></div></div>
+    </div><div class="footer-bottom"><span data-id="© 2026 Nuvora.webdev. Hak cipta dilindungi." data-en="© 2026 Nuvora.webdev. All rights reserved.">© 2026 Nuvora.webdev. Hak cipta dilindungi.</span><a href="mailto:nuvorawebdev@gmail.com?subject=Privacy%20Policy%20Inquiry" data-id="Kebijakan Privasi" data-en="Privacy Policy">Kebijakan Privasi</a></div></div>
+  </footer>
+  <a class="mobile-cta hidden" id="mobile-cta" href="#contact"><span data-id="Mulai Konsultasi" data-en="Start a Consultation">Mulai Konsultasi</span> ↗</a>
+
+  <script>
+    (function(){
+      const html=document.documentElement;
+      const langButtons=[...document.querySelectorAll('[data-set-lang]')];
+      function setLanguage(lang,save=true){
+        const chosen=lang==='en'?'en':'id';
+        html.lang=chosen;
+        const title=document.querySelector('title');if(title)title.textContent=title.dataset['title'+(chosen==='en'?'En':'Id')];
+        const description=document.querySelector('meta[name="description"]');if(description)description.content=description.dataset['description'+(chosen==='en'?'En':'Id')];
+        const nav=document.getElementById('nav-links');if(nav)nav.setAttribute('aria-label',chosen==='en'?'Primary navigation':'Navigasi utama');
+        const faqList=document.querySelector('.faq-list');if(faqList)faqList.setAttribute('aria-label',chosen==='en'?'Frequently asked questions':'Pertanyaan yang sering diajukan');
+        const languageGroup=document.querySelector('.lang-switch');if(languageGroup)languageGroup.setAttribute('aria-label',chosen==='en'?'Language':'Pilih bahasa');
+        document.querySelectorAll('[data-id][data-en]').forEach(node=>{node.textContent=node.dataset[chosen]});
+        document.querySelectorAll('[data-alt-id][data-alt-en]').forEach(node=>{node.alt=node.dataset[chosen==='en'?'altEn':'altId']});
+        document.querySelectorAll('[data-price-id][data-price-en]').forEach(node=>{node.textContent=node.dataset[chosen==='en'?'priceEn':'priceId']});
+        document.querySelectorAll('[data-wa-id][data-wa-en]').forEach(link=>{link.href='https://wa.me/6285196322176?text='+encodeURIComponent(link.dataset[chosen==='en'?'waEn':'waId'])});
+        langButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.setLang===chosen)));
+        const menuToggle=document.getElementById('menu-toggle');if(menuToggle){const open=menuToggle.getAttribute('aria-expanded')==='true';menuToggle.setAttribute('aria-label',chosen==='en'?(open?'Close menu':'Open menu'):(open?'Tutup menu':'Buka menu'))}
+        if(save){try{localStorage.setItem('nuvora-lang',chosen)}catch(e){}}
+      }
+      langButtons.forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.setLang)));
+      try{const saved=localStorage.getItem('nuvora-lang');if(saved==='en'||saved==='id')setLanguage(saved,false)}catch(e){}
+      const menu=document.getElementById('nav-links');
+      const toggle=document.getElementById('menu-toggle');
+      function closeMenu(){menu.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label',html.lang==='en'?'Open menu':'Buka menu')}
+      toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');document.body.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',html.lang==='en'?(open?'Close menu':'Open menu'):(open?'Tutup menu':'Buka menu'))});
+      menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+      document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu()});
+      const navLinks=[...menu.querySelectorAll('a[href^="#"]')];
+      if('IntersectionObserver' in window){const navObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>{if(a.getAttribute('href')==='#'+entry.target.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}})},{rootMargin:'-25% 0px -65% 0px',threshold:0});document.querySelectorAll('main section[id]').forEach(section=>navObserver.observe(section))}
+      html.classList.add('faq-motion-ready');
+      document.querySelectorAll('.faq-item').forEach(item=>{const summary=item.querySelector('summary'),answer=item.querySelector('.faq-answer');if(!summary||!answer)return;summary.setAttribute('aria-expanded',String(item.open));summary.addEventListener('click',event=>{event.preventDefault();const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const closing=item.classList.contains('is-closing');if(reduced){const nextOpen=!item.open||closing;item.classList.remove('is-closing');item.open=nextOpen;answer.style.height=nextOpen?'auto':'0px';summary.setAttribute('aria-expanded',String(nextOpen));return}if(item.open&&!closing){answer.style.height=answer.scrollHeight+'px';void answer.offsetHeight;item.classList.add('is-closing');summary.setAttribute('aria-expanded','false');requestAnimationFrame(()=>{answer.style.height='0px'})}else{item.classList.remove('is-closing');item.open=true;answer.style.height='0px';summary.setAttribute('aria-expanded','true');requestAnimationFrame(()=>{answer.style.height=answer.scrollHeight+'px'})}});answer.addEventListener('transitionend',event=>{if(event.propertyName!=='height')return;if(item.classList.contains('is-closing')){item.open=false;item.classList.remove('is-closing');answer.style.height='0px'}else if(item.open){answer.style.height='auto'}})});
+      const sticky=document.getElementById('mobile-cta'),primary=document.querySelector('.hero-actions .btn-lime'),pricingGrid=document.querySelector('.pricing-grid'),final=document.querySelector('#contact .final-card'),footerCallout=document.querySelector('.footer-callout');
+      if('IntersectionObserver'in window){let heroActionVisible=true,pricingVisible=false,finalVisible=false,footerCalloutVisible=false;const sync=()=>sticky.classList.toggle('hidden',heroActionVisible||pricingVisible||finalVisible||footerCalloutVisible);new IntersectionObserver(([entry])=>{heroActionVisible=entry.isIntersecting;sync()},{threshold:.15}).observe(primary);new IntersectionObserver(([entry])=>{pricingVisible=entry.isIntersecting;sync()},{threshold:.04}).observe(pricingGrid);new IntersectionObserver(([entry])=>{finalVisible=entry.isIntersecting;sync()},{threshold:.12}).observe(final);if(footerCallout)new IntersectionObserver(([entry])=>{footerCalloutVisible=entry.isIntersecting;sync()},{threshold:.1}).observe(footerCallout)}
+    })();
+  </script>
+</body>
+</html>
